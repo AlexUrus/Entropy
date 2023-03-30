@@ -31,5 +31,6 @@
         <Label Content="Недогруженность алфавита" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="EntropyFirstStage" HorizontalAlignment="Left" Margin="49,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <Label Content="Энтропия 1-го порядка" HorizontalAlignment="Left" Margin="50,296,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SwitchToMutInfo" Content="Взаимная информация" HorizontalAlignment="Left" Margin="51,20,0,0" VerticalAlignment="Top" Click="SwitchToMutInfo_Click"/>
     </Grid>
 </Window>

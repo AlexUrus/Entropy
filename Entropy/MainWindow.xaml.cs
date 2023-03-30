@@ -36,6 +36,13 @@ namespace Entropy
             TwoSymbolGrid.ItemsSource = calculates.BigramProbabilities;
             OneSymbolGrid.ItemsSource = calculates.SymbolProbabilities;
         }
+
+        private void SwitchToMutInfo_Click(object sender, RoutedEventArgs e)
+        {
+            CountMutualInfo mutualInfo = new CountMutualInfo();
+            mutualInfo.MainWind = this;
+            mutualInfo.Show();
+        }
     }
 
     

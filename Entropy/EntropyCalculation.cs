@@ -8,17 +8,23 @@ namespace Entropy
     public class EntropyCalculation
     {
         #region Коллекции 
-
         public Dictionary<string, double> BigramProbabilities { get; private set; }
         public Dictionary<char, double> SymbolProbabilities { get; private set; }
 
+        public Dictionary<string, double> MatrixUncondEntropy { get; private set; }
         #endregion
+
         #region Выходные значения
         public int Ansambl { get; private set; }
         public double Entropy { get; private set; }
         public double EntropyFirstStage { get; private set; }
         public double MaxEntropy { get; private set; }
         public double UnderLoadAlphabet { get; private set; }
+
+        public double XUnconditionalEntropy { get; private set; }
+        public double YUnconditionalEntropy { get; private set; }
+        public double MutuaLEntropy { get; private set; }
+        public double CountMutualInfo { get; private set; }
         #endregion
         public string Message { get; set; }
 
@@ -151,6 +157,40 @@ namespace Entropy
                 return true;
             }
             else return false;
+        }
+
+        private void CalcCountMutualInfo()
+        {
+            CountMutualInfo = XUnconditionalEntropy + YUnconditionalEntropy - MutuaLEntropy;
+        }
+
+        private void CalcMatrixUncondEntropy()
+        {
+            MatrixUncondEntropy = new Dictionary<string, double>();
+
+            double element;
+            foreach (KeyValuePair<string, double> bigram in BigramProbabilities)
+            {
+                foreach (KeyValuePair<char, double> onegram in SymbolProbabilities)
+                {
+                    if (isFirstSymbEqually(bigram.Key, onegram.Key))
+                    {
+                        element = onegram.Value * bigram.Value;
+                        MatrixUncondEntropy.Add(bigram.Key, element);
+                    }
+                }
+            }
+        }
+
+        private void CalcXUncondEntropy()
+        {
+           /* XUnconditionalEntropy = 0.0;
+
+            for (int i = 0; i < ; i++)
+            {
+
+            }
+            XUnconditionalEntropy -= */
         }
     }
 }
