@@ -34,19 +34,23 @@ namespace Entropy
             BigramProbabilities = new Dictionary<string, double>(); 
         }
 
-        public void CalcAllFields()
+        public async void CalcAllFields()
         {
-            if(Message != null)
+            await Task.Run(() =>
             {
-                CalcBigramProbabilities();
-                CalcSymbolProbabilities();
+                if (Message != null)
+                {
+                    CalcBigramProbabilities();
+                    CalcSymbolProbabilities();
 
-                CalcAnsambl();
-                CalcEntropy();
-                CalcMaxEntropy();
-                CalcUnderLoadAlphabet();
-                CalcEntropyFirstStage();
-            }
+                    CalcAnsambl();
+                    CalcEntropy();
+                    CalcMaxEntropy();
+                    CalcUnderLoadAlphabet();
+                    CalcEntropyFirstStage();
+                }
+            });
+
         }
         private void CalcBigramProbabilities()
         {
@@ -78,13 +82,16 @@ namespace Entropy
             Ansambl = SymbolProbabilities.Count;  
         }
 
-        private void CalcEntropy()
+        private async void CalcEntropy()
         {
-            Entropy = 0;
-            foreach (double p in SymbolProbabilities.Values)
+            await Task.Run(() =>
             {
-                Entropy -= p * Math.Log(p, 2);
-            }
+                Entropy = 0;
+                foreach (double p in SymbolProbabilities.Values)
+                {
+                    Entropy -= p * Math.Log(p, 2);
+                }
+            });
         }
 
         private void CalcMaxEntropy()
@@ -97,22 +104,24 @@ namespace Entropy
             UnderLoadAlphabet = MaxEntropy - Entropy;
         }
 
-        private void CalcEntropyFirstStage()
+        private async void CalcEntropyFirstStage()
         {
-            EntropyFirstStage = 0.0;
-            double firstSum;
-
-            foreach (KeyValuePair<string, double> bigram in BigramProbabilities)
+            await Task.Run(() =>
             {
-                foreach (KeyValuePair<char, double> onegram in SymbolProbabilities)
+                EntropyFirstStage = 0.0;
+                double firstSum;
+                foreach (KeyValuePair<string, double> bigram in BigramProbabilities)
                 {
-                    if (isFirstSymbEqually(bigram.Key, onegram.Key))
+                    foreach (KeyValuePair<char, double> onegram in SymbolProbabilities)
                     {
-                        firstSum = bigram.Value * Math.Log2(bigram.Value);
-                        EntropyFirstStage -= onegram.Value * firstSum;
+                        if (isFirstSymbEqually(bigram.Key, onegram.Key))
+                        {
+                            firstSum = bigram.Value * Math.Log2(bigram.Value);
+                            EntropyFirstStage -= onegram.Value * firstSum;
+                        }
                     }
                 }
-            }
+            });
         }
 
         private Dictionary<char, int> OneSymbCountContains()
