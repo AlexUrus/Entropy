@@ -37,11 +37,30 @@ namespace Entropy
             OneSymbolGrid.ItemsSource = calculates.SymbolProbabilities;
         }
 
-        private void SwitchToMutInfo_Click(object sender, RoutedEventArgs e)
+        private void SwitchTask_Click(object sender, RoutedEventArgs e)
         {
-            CountMutualInfo mutualInfo = new CountMutualInfo();
-            mutualInfo.MainWind = this;
-            mutualInfo.Show();
+            if(SwitchTask.Content.Equals("Взаимная информация"))
+            {
+                SwitchTask.Content = "Энтропия";
+            }
+            else
+            {
+                SwitchTask.Content = "Взаимная информация";
+            }
+
+
+        }
+
+        private void SwitchTextBoxForTask()
+        {
+            if(SwitchTask.Content.Equals("Взаимная информация"))
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 

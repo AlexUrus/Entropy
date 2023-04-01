@@ -114,7 +114,7 @@ namespace Entropy
                 {
                     foreach (KeyValuePair<char, double> onegram in SymbolProbabilities)
                     {
-                        if (isFirstSymbEqually(bigram.Key, onegram.Key))
+                        if (IsFirstSymbEqually(bigram.Key, onegram.Key))
                         {
                             firstSum = bigram.Value * Math.Log2(bigram.Value);
                             EntropyFirstStage -= onegram.Value * firstSum;
@@ -159,7 +159,7 @@ namespace Entropy
             return twoSymbCountContains;
         }
 
-        private bool isFirstSymbEqually(string firstMessage, char symbol)
+        private bool IsFirstSymbEqually(string firstMessage, char symbol)
         {
             if (firstMessage[0] == symbol)
             {
@@ -182,7 +182,7 @@ namespace Entropy
             {
                 foreach (KeyValuePair<char, double> onegram in SymbolProbabilities)
                 {
-                    if (isFirstSymbEqually(bigram.Key, onegram.Key))
+                    if (IsFirstSymbEqually(bigram.Key, onegram.Key))
                     {
                         element = onegram.Value * bigram.Value;
                         MatrixUncondEntropy.Add(bigram.Key, element);
@@ -190,6 +190,7 @@ namespace Entropy
                 }
             }
         }
+
 
         private void CalcXUncondEntropy()
         {

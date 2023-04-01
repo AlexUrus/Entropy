@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="737">
     <Grid>
         <TextBox x:Name="Message" HorizontalAlignment="Left" Margin="50,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="Message_TextChanged"/>
-        <Label Content="Сообщение" HorizontalAlignment="Left" Margin="50,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelMessage" Content="Сообщение" HorizontalAlignment="Left" Margin="50,56,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Ansambl" HorizontalAlignment="Left" Margin="50,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <DataGrid x:Name="OneSymbolGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="247,0,0,0" IsReadOnly="True" HorizontalAlignment="Left" Width="225" >
             <DataGrid.Columns>
@@ -23,14 +23,14 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="EntropyValue" HorizontalAlignment="Left" Margin="50,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <Label Content="Ансамбль" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top"/>
-        <Label Content="Энтропия" HorizontalAlignment="Left" Margin="50,155,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelAnsambl" Content="Ансамбль" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelEntropy" Content="Энтропия" HorizontalAlignment="Left" Margin="50,155,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="MaxEntropy" HorizontalAlignment="Left" Margin="50,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <TextBox x:Name="UnderLoadAlphabet" HorizontalAlignment="Left" Margin="50,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <Label Content="Максимальная Энтропия" HorizontalAlignment="Left" Margin="51,199,0,0" VerticalAlignment="Top"/>
-        <Label Content="Недогруженность алфавита" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelMaxEntropy" Content="Максимальная Энтропия" HorizontalAlignment="Left" Margin="51,199,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelUnderload" Content="Недогруженность алфавита" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="EntropyFirstStage" HorizontalAlignment="Left" Margin="49,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <Label Content="Энтропия 1-го порядка" HorizontalAlignment="Left" Margin="50,296,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="SwitchToMutInfo" Content="Взаимная информация" HorizontalAlignment="Left" Margin="51,20,0,0" VerticalAlignment="Top" Click="SwitchToMutInfo_Click"/>
+        <Label x:Name="LabelEntropyFirstStage" Content="Энтропия 1-го порядка" HorizontalAlignment="Left" Margin="50,296,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SwitchTask" Content="Взаимная информация" HorizontalAlignment="Left" Margin="51,20,0,0" VerticalAlignment="Top" Click="SwitchTask_Click"/>
     </Grid>
 </Window>
